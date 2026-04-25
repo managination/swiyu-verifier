@@ -20,10 +20,9 @@ import java.util.List;
  */
 @Schema(
     description = "Represents the Digital Credentials Query Language (DCQL) query according to " +
-        "https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-6 " +
-        "**⚠\uFE0F Not yet implemented**",
+        "https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-6 ",
     extensions = {
-        @Extension(name = "x-implementation-status", properties = @ExtensionProperty(name = "status", value = "not-implemented"))
+        @Extension(name = "x-implementation-status", properties = @ExtensionProperty(name = "status", value = "implemented"))
     },
     example = """
     {

@@ -34,17 +34,31 @@ be accessible by the wallet.
 
 ## 1. Set the environment variables
 
-A sample compose file for an entire setup of both components and a database can be found
-in [sample.compose.yml](sample.compose.yml) file.
-**Replace all placeholder <VARIABLE_NAME>**. In addition to that you need to adapt
-the [verifier metadata](sample.compose.yml#L35) to your use case.
-Those information will be provided to the holder on a dedicated endpoint serving as metadata information of your
-verifier.
+Before running the project, you need to set up the necessary environment variables. You can find a template for these in the `.env` file. 
 
-Please be aware that the **oid4vp** endpoints need to be publicly accessible and set in the environment variable
-`EXTERNAL_URL`.
+Key variables include:
+- `EXTERNAL_URL`: The public-facing URL of the verifier (e.g., `http://localhost:8083`).
+- `VERIFIER_DID`: The Decentralized Identifier (DID) of your verifier.
+- `DID_VERIFICATION_METHOD`: The specific verification method from your DID document.
+- `SIGNING_KEY`: Your private EC key in PEM format.
 
-## 2. Creating a verification
+For more information, see the [environment variable description](https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/#set-the-environment-variables).
+
+## 2. Running with Docker Compose
+
+To quickly start the entire setup, including the verifier service and a PostgreSQL database, you can use `docker compose`.
+
+1. **Configure the environment**: Ensure your `.env` file is properly populated with the variables mentioned above.
+2. **Build and start the services**:
+   ```shell
+   docker compose up --build -d
+   ```
+3. **Verify the status**:
+   The verifier service will be available at `http://localhost:8083`. You can access the Swagger UI at `http://localhost:8083/swagger-ui/index.html`.
+
+A sample compose file for an entire setup of both components and a database can be found in `sample.compose.yml` for reference.
+
+## 3. Creating a verification
 
 > For a detailed understanding of the verification process and the data structure of verification please consult the
 > [DIF presentation exchange specification](https://identity.foundation/presentation-exchange/#presentation-definition).
